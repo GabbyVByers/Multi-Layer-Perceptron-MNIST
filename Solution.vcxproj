@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="opengl_circles.cpp" />
+    <ClCompile Include="opengl_squares.cpp" />
     <ClCompile Include="opengl_user_input.cpp" />
     <ClCompile Include="opengl_utilities.cpp" />
   </ItemGroup>
@@ -119,6 +120,8 @@
     <None Include="glsl_circle.vert" />
     <None Include="glsl_line.frag" />
     <None Include="glsl_line.vert" />
+    <None Include="glsl_square.frag" />
+    <None Include="glsl_square.vert" />
     <None Include="train-images.idx3-ubyte" />
     <None Include="train-labels.idx1-ubyte" />
   </ItemGroup>

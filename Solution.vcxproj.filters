@@ -67,6 +67,9 @@
     <ClCompile Include="opengl_user_input.cpp">
       <Filter>Modules\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="opengl_squares.cpp">
+      <Filter>Modules\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -124,6 +127,12 @@
     </None>
     <None Include="train-labels.idx1-ubyte">
       <Filter>Modules\Perceptron\MNIST Data</Filter>
+    </None>
+    <None Include="glsl_square.frag">
+      <Filter>Modules\OpenGL\Shaders</Filter>
+    </None>
+    <None Include="glsl_square.vert">
+      <Filter>Modules\OpenGL\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

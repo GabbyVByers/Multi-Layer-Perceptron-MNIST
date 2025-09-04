@@ -21,6 +21,7 @@ OpenGL::OpenGL(int initWidth, int initHeight, std::string title)
 	glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
 	initCircleRendering();
+	initSquareRendering();
 	//initLineRendering();
 	//initImGui();
 }
@@ -39,7 +40,7 @@ void OpenGL::enableVSYNC() { glfwSwapInterval(1); }
 
 void OpenGL::clearScreen()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 

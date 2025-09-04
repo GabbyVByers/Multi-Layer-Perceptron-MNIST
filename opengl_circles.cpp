@@ -56,19 +56,6 @@ void OpenGL::renderCircles()
 	glUseProgram(circleShaderProgram);
 
 	std::vector<CircleVertex> circleVertices;
-	for (int i = 0; i < 20; i++)
-	{
-		CircleVertex vert =
-		{
-			randomFloat(-1.0f, 1.0f), // x
-			randomFloat(-1.0f, 1.0f), // y
-			randomFloat( 0.0f, 1.0f), // r
-			randomFloat( 0.0f, 1.0f), // g
-			randomFloat( 0.0f, 1.0f), // b
-			randomFloat( 0.0f, 0.2f), // rad
-		};
-		circleVertices.push_back(vert);
-	}
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(CircleVertex) * circleVertices.size(), &circleVertices[0], GL_STATIC_DRAW);
 	int width, height; glfwGetFramebufferSize(window, &width, &height);

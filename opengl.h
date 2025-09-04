@@ -11,11 +11,18 @@
 #include <iostream>
 #include <vector>
 
+#include "perceptron.h"
+
 class OpenGL
 {
 public:
 
 	GLFWwindow* window = nullptr;
+	Perceptron* perceptron = nullptr;
+
+	unsigned int squareShaderProgram;
+	unsigned int squareVAO;
+	unsigned int squareVBO;
 
 	unsigned int circleShaderProgram;
 	unsigned int circleVAO;
@@ -34,6 +41,10 @@ public:
 	void clearScreen();
 	void swapBuffers();
 	std::string loadSourceFile(std::string filePath);
+
+	// Square Rendering
+	void initSquareRendering();
+	void renderSquares();
 
 	// Circle Rendering
 	void initCircleRendering();

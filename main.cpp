@@ -4,16 +4,16 @@
 
 int main()
 {
-	Perceptron preceptron;
-
+	Perceptron perceptron;
 	OpenGL OpenGL(1920, 1080, "Multilayer Perceptron");
-	OpenGL.disableVSYNC();
+	OpenGL.perceptron = &perceptron;
+	OpenGL.enableVSYNC();
 
 	while (OpenGL.isAlive())
 	{
 		OpenGL.processInput();
 		OpenGL.clearScreen();
-		OpenGL.renderCircles();
+		OpenGL.renderSquares();
 		OpenGL.swapBuffers();
 	}
 

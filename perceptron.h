@@ -51,6 +51,24 @@ public:
 		std::cout << "Num Images  : " << imageFileHeader.numImages << "\n";
 		std::cout << "Num Rows    : " << imageFileHeader.numRows << "\n";
 		std::cout << "Num Columns : " << imageFileHeader.numColumns << "\n";
+
+		handWrittenDigits.clear();
+		handWrittenDigits.reserve(imageFileHeader.numImages);
+		for (int i = 0; i < imageFileHeader.numImages; i++)
+		{
+			HandWrittenDigit digit;
+			digit.pixels = new unsigned char[784]; // Every image is exactly 28x28 and contains exactly 784 pixels.
+			digits.read(reinterpret_cast<char*>(digit.pixels), sizeof(unsigned char) * 784);
+			handWrittenDigits.push_back(digit);
+		}
+	}
+
+	~Perceptron()
+	{
+		for (auto& digit : handWrittenDigits)
+		{
+			delete[] digit.pixels;
+		}
 	}
 };
 
