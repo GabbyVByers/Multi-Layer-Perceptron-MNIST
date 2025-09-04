@@ -115,10 +115,10 @@
     <ClInclude Include="random.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="circle.frag" />
-    <None Include="circle.vert" />
-    <None Include="line.frag" />
-    <None Include="line.vert" />
+    <None Include="glsl_circle.frag" />
+    <None Include="glsl_circle.vert" />
+    <None Include="glsl_line.frag" />
+    <None Include="glsl_line.vert" />
     <None Include="train-images.idx3-ubyte" />
     <None Include="train-labels.idx1-ubyte" />
   </ItemGroup>

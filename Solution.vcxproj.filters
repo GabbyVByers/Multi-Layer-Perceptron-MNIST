@@ -107,16 +107,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="circle.frag">
+    <None Include="glsl_circle.frag">
       <Filter>Modules\OpenGL\Shaders</Filter>
     </None>
-    <None Include="circle.vert">
+    <None Include="glsl_circle.vert">
       <Filter>Modules\OpenGL\Shaders</Filter>
     </None>
-    <None Include="line.frag">
+    <None Include="glsl_line.frag">
       <Filter>Modules\OpenGL\Shaders</Filter>
     </None>
-    <None Include="line.vert">
+    <None Include="glsl_line.vert">
       <Filter>Modules\OpenGL\Shaders</Filter>
     </None>
     <None Include="train-images.idx3-ubyte">
