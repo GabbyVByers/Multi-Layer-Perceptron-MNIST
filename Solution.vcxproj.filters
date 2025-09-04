@@ -22,8 +22,14 @@
     <Filter Include="Modules\OpenGL\Shaders">
       <UniqueIdentifier>{2128bc0a-7bb8-451c-a317-55025c6d8257}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Utilities">
+    <Filter Include="Modules\Perceptron">
+      <UniqueIdentifier>{8efe25d4-f4a3-4cd6-8149-3e2231c66244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
       <UniqueIdentifier>{ce456f36-c151-4b58-a86e-f286ad715d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Perceptron\MNIST Data">
+      <UniqueIdentifier>{f30245d2-539f-460d-8cdf-ec3ef8f71e4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +100,10 @@
       <Filter>Modules\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="random.h">
-      <Filter>Modules\Utilities</Filter>
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="perceptron.h">
+      <Filter>Modules\Perceptron</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +118,12 @@
     </None>
     <None Include="line.vert">
       <Filter>Modules\OpenGL\Shaders</Filter>
+    </None>
+    <None Include="train-images.idx3-ubyte">
+      <Filter>Modules\Perceptron\MNIST Data</Filter>
+    </None>
+    <None Include="train-labels.idx1-ubyte">
+      <Filter>Modules\Perceptron\MNIST Data</Filter>
     </None>
   </ItemGroup>
 </Project>

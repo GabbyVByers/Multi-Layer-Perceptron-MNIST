@@ -56,3 +56,4 @@ std::string OpenGL::loadSourceFile(std::string filePath)
 	buffer << shaderFile.rdbuf();
 	return buffer.str();
 }
+

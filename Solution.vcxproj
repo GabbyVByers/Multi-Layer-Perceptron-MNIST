@@ -111,6 +111,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="opengl.h" />
+    <ClInclude Include="perceptron.h" />
     <ClInclude Include="random.h" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +119,8 @@
     <None Include="circle.vert" />
     <None Include="line.frag" />
     <None Include="line.vert" />
+    <None Include="train-images.idx3-ubyte" />
+    <None Include="train-labels.idx1-ubyte" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
