@@ -6,17 +6,20 @@
 #include <vector>
 #include <iostream>
 
+inline unsigned int returnReversedBytes(unsigned int value)
+{
+	return ((value & 0x000000FF) << 24) |
+		   ((value & 0x0000FF00) << 8)  |
+		   ((value & 0x00FF0000) >> 8)  |
+		   ((value & 0xFF000000) >> 24);
+}
+
 struct ImageFileHeader
 {
 	unsigned int magicNumber = 0;
 	unsigned int numImages = 0;
 	unsigned int numRows = 0;
 	unsigned int numColumns = 0;
-
-	void reverseByteOrdering()
-	{
-
-	}
 };
 
 struct HandWrittenDigit
@@ -38,6 +41,11 @@ public:
 
 		ImageFileHeader imageFileHeader;
 		digits.read(reinterpret_cast<char*>(&imageFileHeader), sizeof(ImageFileHeader));
+		
+		imageFileHeader.magicNumber = returnReversedBytes(imageFileHeader.magicNumber);
+		imageFileHeader.numImages   = returnReversedBytes(imageFileHeader.numImages);
+		imageFileHeader.numRows     = returnReversedBytes(imageFileHeader.numRows);
+		imageFileHeader.numColumns  = returnReversedBytes(imageFileHeader.numColumns);
 
 		std::cout << "Magic Number: " << imageFileHeader.magicNumber << "\n";
 		std::cout << "Num Images  : " << imageFileHeader.numImages << "\n";

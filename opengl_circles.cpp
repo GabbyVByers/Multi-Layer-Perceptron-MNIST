@@ -24,8 +24,8 @@ void OpenGL::initCircleRendering()
 	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(CircleVertex), (void*)(5 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
-	std::string vert = loadSourceFile("circle.vert");
-	std::string frag = loadSourceFile("circle.frag");
+	std::string vert = loadSourceFile("glsl_circle.vert");
+	std::string frag = loadSourceFile("glsl_circle.frag");
 	const char* vertShaderSource = vert.c_str();
 	const char* fragShaderSource = frag.c_str();
 
