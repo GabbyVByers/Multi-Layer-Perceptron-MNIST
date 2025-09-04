@@ -3,16 +3,16 @@
 
 int main()
 {
-    InteropOpenGL OpenGL(1200, 800, "Cuda OpenGL Interop", false);
+	OpenGL OpenGL(1920, 1080, "Multilayer Perceptron");
 
-    while (OpenGL.isAlive())
-    {
-        OpenGL.executePixelKernel();
-        OpenGL.renderFullScreenQuad();
-        OpenGL.renderImGui();
-        OpenGL.swapBuffers();
-    }
+	while (OpenGL.isAlive())
+	{
+		OpenGL.processInput();
+		OpenGL.clearScreen();
+		OpenGL.renderCircles();
+		OpenGL.swapBuffers();
+	}
 
-    return 0;
+	return 0;
 }
 
