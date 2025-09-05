@@ -112,6 +112,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="opengl.h" />
+    <ClInclude Include="mnist_dataset.h" />
     <ClInclude Include="perceptron.h" />
     <ClInclude Include="random.h" />
   </ItemGroup>

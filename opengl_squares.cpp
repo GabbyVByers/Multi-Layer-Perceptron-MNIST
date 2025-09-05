@@ -57,22 +57,22 @@ void OpenGL::renderSquares()
 
 	static int count = 0;
 	count++;
-	count %= perceptron->handWrittenDigits.size();
+	count %= mnist_dataSet->handWrittenDigits.size();
 
 	std::vector<SquareVertex> squareVertices;
-	float scale = 0.05f;
+	float scale = 0.055f;
 	for (int i = 0; i < 784; i++)
 	{
 		int x = i % 28;
 		int y = i / 28;
 		SquareVertex square =
 		{
-			(float)(x *  scale) - 0.5f,
-			(float)(y * -scale) + 0.5f,
-			(float)perceptron->handWrittenDigits[count].pixels[i] / 255.0f,
-			(float)perceptron->handWrittenDigits[count].pixels[i] / 255.0f,
-			(float)perceptron->handWrittenDigits[count].pixels[i] / 255.0f,
-			scale * 0.5f
+			(float)(x *  scale) - 0.75f,
+			(float)(y * -scale) + 0.75f,
+			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
+			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
+			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
+			scale * 0.48f
 		};
 		squareVertices.push_back(square);
 	}
@@ -83,4 +83,3 @@ void OpenGL::renderSquares()
 	glDrawArrays(GL_POINTS, 0, (GLsizei)squareVertices.size());
 }
 
- 

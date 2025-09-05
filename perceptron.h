@@ -1,74 +1,81 @@
 #pragma once
 
-#include <cassert>
-#include <cstdint>
-#include <fstream>
-#include <vector>
-#include <iostream>
-
-inline unsigned int returnReversedBytes(unsigned int value)
-{
-	return ((value & 0x000000FF) << 24) |
-		   ((value & 0x0000FF00) << 8)  |
-		   ((value & 0x00FF0000) >> 8)  |
-		   ((value & 0xFF000000) >> 24);
-}
-
-struct ImageFileHeader
-{
-	unsigned int magicNumber = 0;
-	unsigned int numImages = 0;
-	unsigned int numRows = 0;
-	unsigned int numColumns = 0;
-};
-
-struct HandWrittenDigit
-{
-	int digit = -1;
-	unsigned char* pixels = nullptr;
-};
-
 class Perceptron
 {
 public:
 
-	std::vector<HandWrittenDigit> handWrittenDigits;
+	float**  layers = nullptr;
+	float**  biases = nullptr;
+	float*** weights = nullptr;
 
 	Perceptron()
 	{
-		std::ifstream digits("train-images.idx3-ubyte", std::ios::binary | std::ios::ate);
-		size_t sizeDigits = digits.tellg(); digits.seekg(0, std::ios::beg);
+		layers = new float* [4];
+		biases = new float* [3];
+		weights = new float** [3];
 
-		ImageFileHeader imageFileHeader;
-		digits.read(reinterpret_cast<char*>(&imageFileHeader), sizeof(ImageFileHeader));
-		
-		imageFileHeader.magicNumber = returnReversedBytes(imageFileHeader.magicNumber);
-		imageFileHeader.numImages   = returnReversedBytes(imageFileHeader.numImages);
-		imageFileHeader.numRows     = returnReversedBytes(imageFileHeader.numRows);
-		imageFileHeader.numColumns  = returnReversedBytes(imageFileHeader.numColumns);
+		layers[0] = new float[784];
+		layers[1] = new float[16];
+		layers[2] = new float[16];
+		layers[3] = new float[10];
 
-		std::cout << "Magic Number: " << imageFileHeader.magicNumber << "\n";
-		std::cout << "Num Images  : " << imageFileHeader.numImages << "\n";
-		std::cout << "Num Rows    : " << imageFileHeader.numRows << "\n";
-		std::cout << "Num Columns : " << imageFileHeader.numColumns << "\n";
+		biases[0] = new float[16];
+		biases[1] = new float[16];
+		biases[2] = new float[10];
 
-		handWrittenDigits.clear();
-		handWrittenDigits.reserve(imageFileHeader.numImages);
-		for (int i = 0; i < imageFileHeader.numImages; i++)
+		weights[0] = new float* [784];
+		weights[1] = new float* [16];
+		weights[2] = new float* [16];
+
+		for (int i = 0; i < 784; i++)
 		{
-			HandWrittenDigit digit;
-			digit.pixels = new unsigned char[784]; // Every image is exactly 28x28 and contains exactly 784 pixels.
-			digits.read(reinterpret_cast<char*>(digit.pixels), sizeof(unsigned char) * 784);
-			handWrittenDigits.push_back(digit);
+			weights[0][i] = new float[16];
+		}
+
+		for (int i = 0; i < 16; i++)
+		{
+			weights[1][i] = new float[16];
+		}
+
+		for (int i = 0; i < 16; i++)
+		{
+			weights[2][i] = new float[10];
 		}
 	}
 
 	~Perceptron()
 	{
-		for (auto& digit : handWrittenDigits)
+		for (int i = 0; i < 784; i++)
 		{
-			delete[] digit.pixels;
+			delete[] weights[0][i];
 		}
+
+		for (int i = 0; i < 16; i++)
+		{
+			delete[] weights[1][i];
+		}
+
+		for (int i = 0; i < 16; i++)
+		{
+			delete[] weights[2][i];
+		}
+
+		delete[] weights[0];
+		delete[] weights[1];
+		delete[] weights[2];
+
+		delete[] biases[0];
+		delete[] biases[1];
+		delete[] biases[2];
+
+		delete[] layers[0];
+		delete[] layers[1];
+		delete[] layers[2];
+		delete[] layers[3];
+
+		delete[] layers;
+		delete[] biases;
+		delete[] weights;
 	}
 };
 
