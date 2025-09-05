@@ -13,6 +13,7 @@
 
 #include "perceptron.h"
 #include "mnist_dataset.h"
+#include "vec2f.h"
 
 class OpenGL
 {
@@ -35,6 +36,11 @@ public:
 	unsigned int lineVAO;
 	unsigned int lineVBO;
 
+	float stride = 0.5f;
+	float spacing = 0.07f;
+	float outer = 0.03f;
+	float inner = 0.027f;
+
 	// Utilities
 	OpenGL(int initWidth, int initHeight, std::string title);
 	~OpenGL();
@@ -50,12 +56,13 @@ public:
 	void renderSquares();
 
 	// Circle Rendering
+	Vec2f neuronScreenPosition(int layer, int neuron);
 	void initCircleRendering();
 	void renderCircles();
 
 	// Line Rendering
-	//void initLineRendering();
-	//void renderLines();
+	void initLineRendering();
+	void renderLines();
 
 	// GUI
 	//void initImGui() const;

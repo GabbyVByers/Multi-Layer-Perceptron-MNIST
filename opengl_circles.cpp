@@ -49,36 +49,40 @@ void OpenGL::initCircleRendering()
 	glEnable(GL_PROGRAM_POINT_SIZE);
 }
 
+Vec2f OpenGL::neuronScreenPosition(int layer, int neuron)
+{
+	float x_pos = (((float)(perceptron->numLayers - 1) / 2.0f) * (-1.0f * stride)) + (stride * layer);
+	int numNeuronsToDraw = -1;
+	if (layer == 0) { numNeuronsToDraw = 23; }
+	else { numNeuronsToDraw = perceptron->networkStructure[layer]; }
+	float y_pos = (((float)(numNeuronsToDraw - 1) / 2.0f) * (-1.0f * spacing)) + (spacing * neuron);
+	return { x_pos, y_pos };
+}
+
 void OpenGL::renderCircles()
 {
 	glBindVertexArray(circleVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, circleVBO);
 	glUseProgram(circleShaderProgram);
 
-	float stride = 0.5f;
-	float spacing = 0.07f;
-	float outer = 0.03f;
-	float inner = outer - 0.003f;
-
 	std::vector<CircleVertex> circleVertices;
 
-	float currColumnPos = ((float)(perceptron->numLayers - 1) / 2.0f) * (-1.0f * stride);
 	for (int layer = 0; layer < perceptron->numLayers; layer++)
 	{
-		int numNeuronsToDraw = -1;
-		if (layer == 0) { numNeuronsToDraw = 23; }
-		else { numNeuronsToDraw = perceptron->networkStructure[layer]; }
-
-		float currRowPos = ((float)(numNeuronsToDraw - 1) / 2.0f) * (-1.0f * spacing);
-		for (int i = 0; i < numNeuronsToDraw; i++)
+		int numNeurons = -1;
+		if (layer == 0) { numNeurons = 23; }
+		else { numNeurons = perceptron->networkStructure[layer]; }
+		for (int neuron = 0; neuron < numNeurons; neuron++)
 		{
-			CircleVertex outerCircle = { currColumnPos, currRowPos, 1.0f, 1.0f, 1.0f, outer };
-			CircleVertex innerCircle = { currColumnPos, currRowPos, 0.0f, 0.0f, 0.0f, inner };
-			circleVertices.push_back(outerCircle);
-			circleVertices.push_back(innerCircle);
-			currRowPos += spacing;
+			Vec2f position = neuronScreenPosition(layer, neuron);
+			if ((layer == 0) && ((neuron == 10) || (neuron == 11) || (neuron == 12)))
+			{
+				circleVertices.push_back({ position.x, position.y, 1.0f, 1.0f, 1.0f, inner * 0.3f });
+				continue;
+			}
+			circleVertices.push_back({ position.x, position.y, 1.0f, 1.0f, 1.0f, outer });
+			circleVertices.push_back({ position.x, position.y, 0.0f, 0.0f, 0.0f, inner });
 		}
-		currColumnPos += stride;
 	}
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(CircleVertex) * circleVertices.size(), &circleVertices[0], GL_STATIC_DRAW);

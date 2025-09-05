@@ -76,6 +76,9 @@
     <ClCompile Include="perceptron_constructor.cpp">
       <Filter>Modules\Perceptron</Filter>
     </ClCompile>
+    <ClCompile Include="opengl_lines.cpp">
+      <Filter>Modules\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -116,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="perceptron.h">
       <Filter>Modules\Perceptron</Filter>
+    </ClInclude>
+    <ClInclude Include="vec2f.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="opengl_circles.cpp" />
+    <ClCompile Include="opengl_lines.cpp" />
     <ClCompile Include="opengl_squares.cpp" />
     <ClCompile Include="opengl_user_input.cpp" />
     <ClCompile Include="opengl_utilities.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="mnist_dataset.h" />
     <ClInclude Include="perceptron.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="vec2f.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glsl_circle.frag" />

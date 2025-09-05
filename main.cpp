@@ -14,12 +14,13 @@ int main()
 	OpenGL OpenGL(1920, 1080, "Multilayer Perceptron");
 	OpenGL.perceptron = &perceptron;
 	OpenGL.mnist_dataSet = &mnist_dataSet;
-	OpenGL.disableVSYNC();
+	OpenGL.enableVSYNC();
 
 	while (OpenGL.isAlive())
 	{
 		OpenGL.processInput();
 		OpenGL.clearScreen();
+		//OpenGL.renderLines();
 		OpenGL.renderCircles();
 		//OpenGL.renderSquares();
 		OpenGL.swapBuffers();
