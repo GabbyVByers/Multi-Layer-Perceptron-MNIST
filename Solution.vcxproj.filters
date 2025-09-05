@@ -73,6 +73,9 @@
     <ClCompile Include="opengl_squares.cpp">
       <Filter>Modules\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="perceptron_constructor.cpp">
+      <Filter>Modules\Perceptron</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
