@@ -32,12 +32,12 @@ void Perceptron::mallocPerceptron()
 	for (int layer = 0; layer < numLayers - 1; layer++)
 	{
 		int numPrevNeurons = networkStructure[layer];
-		int numNextNeurons = networkStructure[layer + 1];
+		int numCurrNeurons = networkStructure[layer + 1];
 
-		globalWeights[layer] = new float* [numPrevNeurons];
-		for (int i = 0; i < numPrevNeurons; i++)
+		globalWeights[layer] = new float* [numCurrNeurons];
+		for (int i = 0; i < numCurrNeurons; i++)
 		{
-			globalWeights[layer][i] = new float[numNextNeurons];
+			globalWeights[layer][i] = new float[numPrevNeurons];
 		}
 	}
 }
@@ -59,9 +59,9 @@ void Perceptron::freePerceptron()
 	for (int layer = 0; layer < numLayers - 1; layer++)
 	{
 		int numPrevNeurons = networkStructure[layer];
-		int numNextNeurons = networkStructure[layer + 1];
+		int numCurrNeurons = networkStructure[layer + 1];
 
-		for (int i = 0; i < numPrevNeurons; i++)
+		for (int i = 0; i < numCurrNeurons; i++)
 		{
 			delete[] globalWeights[layer][i];
 		}
@@ -76,11 +76,11 @@ void Perceptron::initPerceptronWithRandomWeightsAndBiases()
 	{
 		float** weights = globalWeights[layer];
 		int numPrevNeurons = networkStructure[layer];
-		int numNextNeurons = networkStructure[layer + 1];
+		int numCurrNeurons = networkStructure[layer + 1];
 
-		for (int i = 0; i < numPrevNeurons; i++)
+		for (int i = 0; i < numCurrNeurons; i++)
 		{
-			for (int j = 0; j < numNextNeurons; j++)
+			for (int j = 0; j < numPrevNeurons; j++)
 			{
 				weights[i][j] = randf();
 			}

@@ -22,7 +22,7 @@ OpenGL::OpenGL(int initWidth, int initHeight, std::string title)
 
 	initCircleRendering();
 	initSquareRendering();
-	//initLineRendering();
+	initLineRendering();
 	//initImGui();
 }
 

@@ -79,6 +79,9 @@
     <ClCompile Include="opengl_lines.cpp">
       <Filter>Modules\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="perceptron_propagate.cpp">
+      <Filter>Modules\Perceptron</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -121,6 +124,9 @@
       <Filter>Modules\Perceptron</Filter>
     </ClInclude>
     <ClInclude Include="vec2f.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="sigmoid.h">
       <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "mnist_dataset.h"
 #include "random.h"
 #include <vector>
 
@@ -19,11 +20,15 @@ public:
 	int numLayers = -1;
 	const std::vector<int> networkStructure = { 784, 16, 16, 10 };
 
+	MNISTdataSet* mnist_dataSet = nullptr;
+
 	Perceptron();
 	~Perceptron();
-
 	void mallocPerceptron();
 	void initPerceptronWithRandomWeightsAndBiases();
 	void freePerceptron();
+
+	void mapHandWrittenDigitToInputLayer(int imageIndex);
+	void propagateNeuralNetwork();
 };
 
