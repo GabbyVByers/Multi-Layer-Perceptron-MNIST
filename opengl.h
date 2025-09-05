@@ -11,14 +11,17 @@
 #include <iostream>
 #include <vector>
 
+#include "perceptron.h"
 #include "mnist_dataset.h"
 
 class OpenGL
 {
 public:
 
-	GLFWwindow* window = nullptr;
+	Perceptron* perceptron = nullptr;
 	MNISTdataSet* mnist_dataSet = nullptr;
+	
+	GLFWwindow* window = nullptr;
 
 	unsigned int squareShaderProgram;
 	unsigned int squareVAO;

@@ -8,16 +8,20 @@ int main()
 	{
 		Perceptron perceptron;
 	}
+	
+	Perceptron perceptron;
 	MNISTdataSet mnist_dataSet;
 	OpenGL OpenGL(1920, 1080, "Multilayer Perceptron");
+	OpenGL.perceptron = &perceptron;
 	OpenGL.mnist_dataSet = &mnist_dataSet;
-	OpenGL.enableVSYNC();
+	OpenGL.disableVSYNC();
 
 	while (OpenGL.isAlive())
 	{
 		OpenGL.processInput();
 		OpenGL.clearScreen();
-		OpenGL.renderSquares();
+		OpenGL.renderCircles();
+		//OpenGL.renderSquares();
 		OpenGL.swapBuffers();
 	}
 
