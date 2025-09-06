@@ -60,19 +60,19 @@ void OpenGL::renderSquares()
 	count %= mnist_dataSet->handWrittenDigits.size();
 
 	std::vector<SquareVertex> squareVertices;
-	float scale = 0.055f;
+	float scale = 0.02f;
 	for (int i = 0; i < 784; i++)
 	{
 		int x = i % 28;
 		int y = i / 28;
 		SquareVertex square =
 		{
-			(float)(x *  scale) - 0.75f,
+			(float)(x *  scale) - 1.5f,
 			(float)(y * -scale) + 0.75f,
 			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
 			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
 			(float)mnist_dataSet->handWrittenDigits[count].pixels[i] / 255.0f,
-			scale * 0.48f
+			scale * 0.5f
 		};
 		squareVertices.push_back(square);
 	}

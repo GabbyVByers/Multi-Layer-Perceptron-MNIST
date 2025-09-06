@@ -29,6 +29,6 @@ public:
 	void freePerceptron();
 
 	void mapHandWrittenDigitToInputLayer(int imageIndex);
-	void propagateNeuralNetwork();
+	void forwardPropagation();
 };
 
